@@ -1,0 +1,8 @@
+credentials.json
+.env
+statements
+node_modules
+cron.log
+.run.lock
+.git
+.github

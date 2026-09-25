@@ -1,0 +1,6 @@
+statements/
+.env
+credentials.json
+node_modules/
+cron.log
+.run.lock

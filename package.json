@@ -1,0 +1,25 @@
+{
+  "name": "@ledgerly/scsb-ebank-automation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "import:existing": "bun run src/import-existing.ts",
+    "categorize:existing": "bun run src/categorize-existing.ts",
+    "check:unattended": "bun run src/check-config.ts",
+    "check:headless": "bun run src/check-headless.ts",
+    "setup:portal": "bun run src/setup-portal.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.3.289",
+    "playwright": "1.55.0",
+    "xlsx": "^0.18.5",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.9.2"
+  }
+}

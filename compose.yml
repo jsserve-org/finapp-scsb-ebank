@@ -1,0 +1,23 @@
+name: scsb-ebank
+
+services:
+  fetch:
+    profiles: ["automation"]
+    build: .
+    init: true
+    shm_size: 1gb
+    env_file: .env
+    environment:
+      TZ: Asia/Taipei
+      SCSB_HEADLESS: "true"
+      SCSB_BROWSER_CHANNEL: chromium
+      SCSB_OUTPUT_DIR: /app/statements
+    volumes:
+      - type: bind
+        source: ./credentials.json
+        target: /app/credentials.json
+        read_only: true
+      - type: bind
+        source: ./statements
+        target: /app/statements
+    restart: "no"
