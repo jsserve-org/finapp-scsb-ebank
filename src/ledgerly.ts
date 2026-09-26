@@ -4,7 +4,7 @@ import type { BankRow } from "./parse";
 
 const moneySchema = z.object({ amountMinor: z.number().int(), currency: z.string() });
 const accountSchema = z.object({ id: z.string(), name: z.string(), institution: z.string(), kind: z.string(), balance: moneySchema, updatedAt: z.string() });
-const transactionSchema = z.object({ id: z.string(), accountId: z.string(), description: z.string(), amount: moneySchema, bookedAt: z.string(), pending: z.boolean(), category: z.string().optional(), updatedAt: z.string() });
+const transactionSchema = z.object({ id: z.string(), accountId: z.string(), description: z.string(), amount: moneySchema, bookedAt: z.string(), pending: z.boolean(), category: z.string().optional(), categoryUserEdited: z.boolean().optional(), updatedAt: z.string() });
 const syncSchema = z.object({ cursor: z.string(), changes: z.array(z.object({ entity: z.string(), entityId: z.string(), action: z.string(), value: z.unknown() })), acceptedMutationIds: z.array(z.string()) });
 type Account = z.infer<typeof accountSchema>;
 type Transaction = z.infer<typeof transactionSchema>;

@@ -24,7 +24,7 @@ for (const [key, name] of latest) {
   const file: ImportFile = { section, index: Number(indexText), accountKey: indexText, rows };
   for (const row of rows) ids.add(bankTransactionId(file, row));
 }
-const pending = (await client.transactions()).filter((transaction) => ids.has(transaction.id) && !transaction.category);
+const pending = (await client.transactions()).filter((transaction) => ids.has(transaction.id) && !transaction.category && !transaction.categoryUserEdited);
 console.log(`Uncategorized SCSB imports: ${pending.length}`);
 if (pending.length) {
   const suggestions = await suggestCategories(pending.map((transaction) => ({ id: transaction.id, description: transaction.description, amountMinor: transaction.amount.amountMinor, currency: transaction.amount.currency })), secrets.OPENROUTER_API_KEY, process.env.OPENROUTER_CATEGORY_MODEL ?? "openai/gpt-6-luna");
